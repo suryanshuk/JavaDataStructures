@@ -1,17 +1,12 @@
-package LinklisthelperAPI;
+package LinklisthelperAPIs;
+
 
 import java.util.NoSuchElementException;
 
 /**
  * @author suryanshu
- * 
- * @param <T> T is a generic object
- */
-
-/**
- * @author sgampa
  *
- * @param <T>
+ * @param <T> T is a generic variable
  */
 public class LinkedListHelper<T> {
 
@@ -63,7 +58,7 @@ public class LinkedListHelper<T> {
 		size = 0;
 	}
 
-	private Node getHead() {
+	public Node getHead() {
 		return head;
 	}
 
@@ -194,6 +189,11 @@ public class LinkedListHelper<T> {
 	public Node getEnd() {
 		return end;
 	}
+	
+	
+	public void setEnd(Node data) {
+		end= data;
+	}
 
 	public void delFirst() {
 		if (IsEmpty())
@@ -266,6 +266,11 @@ public class LinkedListHelper<T> {
 	
 	
 
+	/** iterator class implementing customized iterator interface
+	 * @author suryanshu
+	 *
+	 * @param <T> T is a generic variable
+	 */
 	private class LinkListHelperIterator<T> implements IteratorCustomized<T> {
 
 		private Node Ref;
@@ -276,7 +281,7 @@ public class LinkedListHelper<T> {
 
 		@Override
 		public boolean hasNext() {
-			if (Ref.getNext() != null)
+			if (Ref.getNext()!= null)
 				return true;
 			else
 				return false;
@@ -301,15 +306,15 @@ public class LinkedListHelper<T> {
 		public T getValue()
 		{
 		
-			T ob = (T)Ref.getData();
-			return ob;
+			T object = (T)Ref.getData();
+			return object;
 		}
 		@Override
 		public T next() {
-			T ob = (T) Ref.getData();
+			T object = (T) Ref.getData();
 			Ref = Ref.getNext();
 
-			return ob;
+			return object;
 		}
 		
 	

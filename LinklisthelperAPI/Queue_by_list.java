@@ -1,4 +1,4 @@
-package LinklisthelperAPI;
+package LinklisthelperAPIs;
 import java.util.NoSuchElementException;
 
 
@@ -11,8 +11,17 @@ public class Queue_by_list<T> extends LinkedListHelper<T> {
 
 	LinkedListHelper<T> list;
 	IteratorCustomized<T> iterator;
+	private int limit;
 	
 	
+	public int getLimit() {
+		return limit;
+	}
+
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+
 	/**constructor to create a new list
 	 * 
 	 */

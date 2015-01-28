@@ -1,49 +1,67 @@
 package Threads;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import LinklisthelperAPIs.Queue_by_list;
 
-import LinklisthelperAPI.*;
+/**
+ * @author Suryanshu
+ *
+ * @param <T> is a generic variable
+ */
 
-
- 
 public class add<T> implements Runnable {
       
     Queue_by_list<Packet> ref;
-public add(Queue_by_list<Packet> passed)
+    long lambda;
+    timeStamp time = new timeStamp();
+    
+/**constructor method of add class
+ * @param passed Q1 list is passed
+ * @param limit  is Q1 holding capacity
+ */
+public add(Queue_by_list<Packet> passed,long rate_of_packets)
 {
     ref = passed;
+    lambda = rate_of_packets;
 }
       
       
         @Override
         public void run() {
-             
-            for(int i=0;i<100;i++)
+            
+            addToQ1(); 
+         
+        }
+         
+        /**method to add packets to Q1
+         * 
+         */
+        public  void addToQ1()
+        {
+            while(true)
             {
-                try{
+            	//providing mutex lock for Q1 to wait and notify
+            
                 Packet packet = new Packet();
-                System.out.println("packet" +packet.getId()+" is created");
-                
-                Thread.sleep(1000);
                 ref.enqueue(packet);
-                
-                Date d = new Date();
-                SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-                
-                
-                System.out.println("packet" +packet.getId()+" is added at" +sdf.format(d));
-               
+                System.out.println("packet " + packet.getid()+ " is added to q1");
+                time.getTime();
+                System.out.println("THIS IS Q1 :");
+                ref.display();
+        
+                synchronized (ref) {
+                	
+                	if(ref.getsize()>0)
+						ref.notifyAll();
+                }
+                try{
+                	Thread.sleep(lambda);
                 }
                 catch(InterruptedException e)
                 {
-                    e.printStackTrace();
+                	e.printStackTrace();
                 }
             }
-             
-             
-              
         }
-          
+         
         
   
     }

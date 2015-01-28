@@ -1,5 +1,6 @@
-package LinklisthelperAPI;
+package LinklisthelperAPIs;
 import java.util.NoSuchElementException;
+import LinklisthelperAPIs.*;
 
 
 /**
@@ -16,7 +17,7 @@ public class StackByList<T> extends LinkedListHelper<T> {
 	//constructor method initializing a new list
 	public StackByList()
 	{
-		list = new LinkedListHelper<>();
+		list = new LinkedListHelper<T>();
 		
 	}
 	
@@ -92,7 +93,6 @@ public class StackByList<T> extends LinkedListHelper<T> {
 	 */
 	public void display()
 	{
-		System.out.println("djf");
 		list.display();
 	}
 
